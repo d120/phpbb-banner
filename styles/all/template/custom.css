@@ -1,9 +1,9 @@
 #info-box{
   float: right;
-  padding: 7px;
+  padding: 5px 5px;
 }
 #info-box img {
-  max-height: 70px;
+  max-height: 75px;
 }
 #info-box a p{
   color: #FFF;
