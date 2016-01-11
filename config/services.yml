@@ -1,0 +1,9 @@
+services:
+    d120de.banner.listener:
+        class: d120de\banner\event\main_listener
+        arguments:
+            - @config
+            - @controller.helper
+            - @template
+        tags:
+            - { name: event.listener }

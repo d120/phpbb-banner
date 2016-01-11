@@ -1,0 +1,21 @@
+#info-box{
+float: right;
+}
+#info-box a p{
+color: #FFF;
+font-weight: bold;
+}
+
+@media all and (max-width: 700px), all and (max-device-width: 700px){
+#info-box a img{
+display:none;
+}
+}
+@media all and (min-width: 701px), all and (min-device-width: 701px)){
+#info-box a p{
+display:none;
+}
+#site-description{
+width:55%
+}
+}
