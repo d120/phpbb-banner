@@ -54,28 +54,12 @@ class main_listener implements EventSubscriberInterface
 
         $picture_prefix = $phpbb_root_path.'store/d120de/banner/';
 
-        if ($this->config['d120de_banner_enabled'] == true)
-        {
-            $picture_prefix .= 'event/';
-
-            $this->template->assign_vars(array(
-            'D120DE_BANNER_LINK' => $this->config['d120de_banner_link'],
-            'D120DE_BANNER_PICTURE' => $image_prefix.$this->config['d120de_banner_picture'],
-            'D120DE_BANNER_ALT_TEXT' => $this->config['d120de_banner_alt_text'],
-            'D120DE_BANNER_HIDESEARCHBOX' => $this->config['d120de_banner_hidesearchbox'],
-            )); 
-        }
-        else
-        {
-            $picture_prefix .= 'default/';
-            
-            $this->template->assign_vars(array(
-            'D120DE_BANNER_LINK' => $this->config['d120de_banner_link_default'],
-            'D120DE_BANNER_PICTURE' => $this->config['d120de_banner_picture_default'],
-            'D120DE_BANNER_ALT_TEXT' => $this->config['d120de_banner_alt_text_default'],
-            'D120DE_BANNER_HIDESEARCHBOX' => $this->config['d120de_banner_hidesearchbox_default'],
-            ));
-        }
+        $this->template->assign_vars(array(
+        'D120DE_BANNER_LINK' => $this->config['d120de_banner_link_default'],
+        'D120DE_BANNER_PICTURE' => $this->config['d120de_banner_picture'],
+        'D120DE_BANNER_ALT_TEXT' => $this->config['d120de_banner_alt_text_default'],
+        'D120DE_BANNER_HIDESEARCHBOX' => $this->config['d120de_banner_hidesearchbox_default'],
+        ));
         $this->template->assign_vars(array (
         'D120DE_BANNER_PICTURE_PREFIX' => $picture_prefix,
         'D120DE_BANNER_WIDTH' => $this->config['d120de_banner_width'],

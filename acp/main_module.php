@@ -12,18 +12,13 @@ namespace d120de\banner\acp;
 class main_module
 {
     var $u_action;
+    var $pool_root;
 
-    function main($id, $mode)
-    {
+    function load_banner_list($pool) {
         global $db, $user, $auth, $template, $cache, $request;
         global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
 
-        $user->add_lang('acp/common');
-        $this->tpl_name = 'banner_settings';
-        $this->page_title = $user->lang('ACP_D120DE_BANNER_SETTINGS_DEFAULT');
-        add_form_key('d120de/banner');
-
-        $pool_path = 'store/d120de/banner/default/';
+        $pool_path = 'store/d120de/banner/'.$pool.'/';
         $pooldir = @opendir($phpbb_root_path . $pool_path);
         if (!$pooldir)
         {
@@ -36,12 +31,28 @@ class main_module
             if (is_file($phpbb_root_path . $pool_path . $banner_file) && 
                 $banner_file != 'index.htm') // TODO check for image size (height == 60px and width <= 468px)
             {
-                $template->assign_block_vars('d120de_banner_list', array(
-                    'NAME' => $banner_file,
+                $template->assign_block_vars('d120de_banner_list_'.$pool, array(
+                    'NAME' => $pool.'/'.$banner_file,
                     'PATH' => $phpbb_root_path . $pool_path . $banner_file));
             }
         }
         @closedir($pooldir);
+    }
+
+
+    function main($id, $mode)
+    {
+        global $db, $user, $auth, $template, $cache, $request;
+        global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
+
+        $this->pool_root = $phpbb_root_path . 'store/d120de/banner/';
+        $user->add_lang('acp/common');
+        $this->tpl_name = 'banner_settings';
+        $this->page_title = $user->lang('ACP_D120DE_BANNER_SETTINGS_DEFAULT');
+        add_form_key('d120de/banner');
+
+        $this->load_banner_list('default');
+        $this->load_banner_list('event');
 
         if ($request->is_set_post('submit'))
         {
@@ -50,8 +61,8 @@ class main_module
                 trigger_error('FORM_INVALID');
             }
 
-            $filename = $request->variable('d120de_banner_picture_default', '');
-            $filepath = $phpbb_root_path . $pool_path . $filename;
+            $filename = $request->variable('d120de_banner_picture', '');
+            $filepath = $this->pool_root . $filename;
 
             if (is_file($filepath))
             {
@@ -61,11 +72,11 @@ class main_module
             }
             elseif($filename != ''  )
             {
-                trigger_error('The selected Image dose not exist!', E_USER_WARNING);
+                trigger_error('The selected Image does not exist!', E_USER_WARNING);
             }
 
             $config->set('d120de_banner_link_default', $request->variable('d120de_banner_link_default', ''));
-            $config->set('d120de_banner_picture_default', $request->variable('d120de_banner_picture_default', ''));
+            $config->set('d120de_banner_picture', $request->variable('d120de_banner_picture', ''));
             $config->set('d120de_banner_alt_text_default', $request->variable('d120de_banner_alt_text_default', ''));
             $config->set('d120de_banner_hidesearchbox', $request->Is_set('d120de_banner_hidesearchbox'));
             $config->set('d120de_banner_hidesearchbox_default', $request->Is_set('d120de_banner_hidesearchbox_default'));
@@ -76,7 +87,7 @@ class main_module
         $template->assign_vars(array(
             'U_ACTION'                    => $this->u_action,
             'D120DE_BANNER_LINK_DEFAULT' => $config['d120de_banner_link_default'],
-            'D120DE_BANNER_PICTURE_DEFAULT' => $config['d120de_banner_picture_default'],
+            'D120DE_BANNER_PICTURE' => $config['d120de_banner_picture'],
             'D120DE_BANNER_ALT_TEXT_DEFAULT' => $config['d120de_banner_alt_text_default'],
             'D120DE_BANNER_HIDESEARCHBOX' => $config['d120de_banner_hidesearchbox'],
             'D120DE_BANNER_HIDESEARCHBOX_DEFAULT' => $config['d120de_banner_hidesearchbox_default'],

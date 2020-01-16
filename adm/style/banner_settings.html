@@ -4,6 +4,7 @@
 <p>{L_ACP_D120DE_BANNER_DEFAULT_EXPLAIN}</p>
 
 <form id="acp_board" method="post" action="{U_ACTION}">
+
     <fieldset>
         <legend>{L_ACP_D120DE_BANNER_UPLOAD_DEFAULT_TITLE}</legend>
     <dl>
@@ -14,48 +15,64 @@
        <input class="button1" type="submit" id="upload_banner" name="action[upload_banner]" value="{L_SUBMIT}" />
     </p>
     </fieldset>
+
     <fieldset>
         <legend>{L_ACP_D120DE_BANNER_SEARCHBOX_LEGEND}</legend>
-		<dl>
-			<dt><label for="d120de_banner_hidesearchbox_default">{L_ACP_D120DE_BANNER_HIDE_SEARCHBOX_DEFAULT}</label></dt>
-			<dd><input type="checkbox" id="d120de_banner_hidesearchbox_default" name="d120de_banner_hidesearchbox_default"<!-- IF D120DE_BANNER_HIDESEARCHBOX_DEFAULT --> checked="checked"<!-- ENDIF -->></dd>
-		</dl>
-		<dl>
-			<dt><label for="d120de_banner_hidesearchbox">{L_ACP_D120DE_BANNER_HIDE_SEARCHBOX}</label></dt>
-			<dd><input type="checkbox" id="d120de_banner_hidesearchbox" name="d120de_banner_hidesearchbox"<!-- IF D120DE_BANNER_HIDESEARCHBOX --> checked="checked"<!-- ENDIF -->></dd>
-		</dl>
+    <dl>
+      <dt><label for="d120de_banner_hidesearchbox_default">{L_ACP_D120DE_BANNER_HIDE_SEARCHBOX_DEFAULT}</label></dt>
+      <dd><input type="checkbox" id="d120de_banner_hidesearchbox_default" name="d120de_banner_hidesearchbox_default"<!-- IF D120DE_BANNER_HIDESEARCHBOX_DEFAULT --> checked="checked"<!-- ENDIF -->></dd>
+    </dl>
+    <dl>
+      <dt><label for="d120de_banner_hidesearchbox">{L_ACP_D120DE_BANNER_HIDE_SEARCHBOX}</label></dt>
+      <dd><input type="checkbox" id="d120de_banner_hidesearchbox" name="d120de_banner_hidesearchbox"<!-- IF D120DE_BANNER_HIDESEARCHBOX --> checked="checked"<!-- ENDIF -->></dd>
+    </dl>
     </fieldset>
-	<fieldset>
+
+
+    <fieldset>
         <legend>{L_ACP_D120DE_BANNER_DEFAULT_LEGEND}</legend>
-		<dl>
-			<dt><label for="d120de_banner_link_default">{L_ACP_D120DE_BANNER_DEFAULT_LINK}</label>
+    <dl>
+      <dt><label for="d120de_banner_link_default">{L_ACP_D120DE_BANNER_DEFAULT_LINK}</label>
             <br /><span>{L_ACP_D120DE_BANNER_DEFAULT_LINK_EXPLAIN}</span></dt>
-			<dd><input type="text" id="d120de_banner_link_default" name="d120de_banner_link_default" value="{D120DE_BANNER_LINK_DEFAULT}" /></dd>
-		</dl>
-		<dl>
-			<dt><label for="d120de_banner_alt_text_default">{L_ACP_D120DE_BANNER_DEFAULT_ALT_TEXT}</label>
+      <dd><input type="text" size="60" id="d120de_banner_link_default" name="d120de_banner_link_default" value="{D120DE_BANNER_LINK_DEFAULT}" /></dd>
+    </dl>
+    <dl>
+      <dt><label for="d120de_banner_alt_text_default">{L_ACP_D120DE_BANNER_DEFAULT_ALT_TEXT}</label>
             <br /><span>{L_ACP_D120DE_BANNER_DEFAULT_ALT_TEXT_EXPLAIN}</span></dt>
-			<dd><input type="text" id="d120de_banner_alt_text_default" name="d120de_banner_alt_text_default" value="{D120DE_BANNER_ALT_TEXT_DEFAULT}" /></dd>
-		</dl>
-		<dl>
-			<dt><label>{L_ACP_D120DE_BANNER_DEFAULT_PICTURE}</label>
-            <br /><span>{L_ACP_D120DE_BANNER_DEFAULT_PICTURE_EXPLAIN}</span></dt>
-	        <dd><label><input type="radio" name="d120de_banner_picture_default" value="" 
-<!-- IF not D120DE_BANNER_PICTURE_DEFAULT --> checked="checked" <!-- ENDIF -->style="margin-right: 10px;" />{L_ACP_D120DE_BANNER_NO_PICTURE}</label></dd>
-	        <!-- BEGIN d120de_banner_list -->
-	        <dd><label><input type="radio" name="d120de_banner_picture_default" value="{d120de_banner_list.NAME}" <!-- IF D120DE_BANNER_PICTURE_DEFAULT == d120de_banner_list.NAME --> checked="checked"<!-- ENDIF --> style="margin-right: 10px;" /><img src="{d120de_banner_list.PATH}" alt="{d120de_banner_list.NAME}" title="{d120de_banner_list.NAME}" /></label></dd>
-	        <!-- END d120de_banner_list -->
-		</dl>
+      <dd><input type="text"  size="60" id="d120de_banner_alt_text_default" name="d120de_banner_alt_text_default" value="{D120DE_BANNER_ALT_TEXT_DEFAULT}" /></dd>
+    </dl>
+    <dl>
+      <dt><label>{L_ACP_D120DE_BANNER_PICTURE}</label>
+            <br /><span>{L_ACP_D120DE_BANNER_PICTURE_EXPLAIN}</span></dt>
+          <dd><label><input type="radio" name="d120de_banner_picture" value="" 
+<!-- IF not D120DE_BANNER_PICTURE --> checked="checked" <!-- ENDIF -->style="margin-right: 10px;" />{L_ACP_D120DE_BANNER_NO_PICTURE}</label></dd>
+          <!-- BEGIN d120de_banner_list_default -->
+          <dd><label><input type="radio" name="d120de_banner_picture" value="{d120de_banner_list_default.NAME}" <!-- IF D120DE_BANNER_PICTURE == d120de_banner_list_default.NAME --> checked="checked"<!-- ENDIF --> style="margin-right: 10px;" /><img src="{d120de_banner_list_default.PATH}" alt="{d120de_banner_list_default.NAME}" title="{d120de_banner_list_default.NAME}" /></label></dd>
+          <!-- END d120de_banner_list_default -->
+    </dl>
+    </fieldset>
 
-</fieldset>
-<fieldset>
+
+
+    <fieldset><legend>{L_ACP_D120DE_BANNER_EVENT_LEGENT}</legend>
+    <dl>
+      <dt><label>{L_ACP_D120DE_BANNER_PICTURE}</label>
+            <br /><span>{L_ACP_D120DE_BANNER_PICTURE_EXPLAIN}</span></dt>
+          <!-- BEGIN d120de_banner_list_event -->
+          <dd><label><input type="radio" name="d120de_banner_picture" value="{d120de_banner_list_event.NAME}" <!-- IF D120DE_BANNER_PICTURE == d120de_banner_list_event.NAME --> checked="checked"<!-- ENDIF --> style="margin-right: 10px;" /><img src="{d120de_banner_list_event.PATH}" alt="{d120de_banner_list_event.NAME}" title="{d120de_banner_list_event.NAME}" /></label></dd>
+          <!-- END d120de_banner_list_event -->
+    </dl>
+    </fieldset>
+
+
+    <fieldset>
     <legend>{L_ACP_SUBMIT_CHANGES}</legend>
-		<p class="submit-buttons">
-			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}">&nbsp;
-			<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}">
-		</p>
+    <p class="submit-buttons">
+      <input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}">&nbsp;
+      <input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}">
+    </p>
 
-		{S_FORM_TOKEN}
-	</fieldset>
+    {S_FORM_TOKEN}
+    </fieldset>
 </form>
 <!-- INCLUDE overall_footer.html -->
